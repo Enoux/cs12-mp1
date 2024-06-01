@@ -60,7 +60,7 @@ class Player:
                 self.start = 16
             self.dir = 'E'
         
-        pyxel.blt(self.x, self.y, 0, self.start, 0, 16*self.rot_x, 16*self.rot_y, 6)
+        pyxel.blt(self.x, self.y, 0, self.start, 0, 16*self.rot_x, 16*self.rot_y)
 
     def fire(self):
         if pyxel.btnp(pyxel.KEY_SPACE):
