@@ -8,11 +8,15 @@ pyxel.load("resource.pyxres")
 '''
 TO-DO:
 - Ayusin loading ng app (initialization)
-- Gawing mas efficient ung pag move ng player HAHSAHAH
 - Ayusin ung bullet (icenter and sht)
 - Ayusin qng anuman yung issue sa update vs draw :O (kasi rn they seem to do the same thing)
 
 - Mga actual to-dos for the MP HAHAHAHA ^-^
+
+[Karin] TO-DO 
+- fix bullet
+- retheme? >:)
+- tilemap
 '''
 
 @dataclass
@@ -28,7 +32,7 @@ class Player:
     bullet = None
     
     def move(self):
-        if pyxel.btnp(pyxel.KEY_W):
+        if pyxel.btnp(pyxel.KEY_W, True, True):
             test = self.y - 5
             if not test < 0:
                 self.y -= 5
@@ -36,7 +40,7 @@ class Player:
                 self.start = 0
             self.dir = 'N'
         
-        if pyxel.btnp(pyxel.KEY_A):
+        if pyxel.btnp(pyxel.KEY_A, True, True):
             test = self.x - 5
             if not test < 0:
                 self.x -= 5
@@ -44,7 +48,7 @@ class Player:
                 self.start = 16
             self.dir = 'W'
         
-        if pyxel.btnp(pyxel.KEY_S):
+        if pyxel.btnp(pyxel.KEY_S, True, True):
             test = self.y + self.height + 5
             if not test > 160:
                 self.y += 5
@@ -52,7 +56,7 @@ class Player:
                 self.start = 0
             self.dir = 'S'
         
-        if pyxel.btnp(pyxel.KEY_D):
+        if pyxel.btnp(pyxel.KEY_D, True, True):
             test = self.x + self.height + 5
             if not test > 160:
                 self.x += 5
@@ -60,7 +64,7 @@ class Player:
                 self.start = 16
             self.dir = 'E'
         
-        pyxel.blt(self.x, self.y, 0, self.start, 0, 16*self.rot_x, 16*self.rot_y, 6)
+        pyxel.blt(self.x, self.y, 0, self.start, 0, 16*self.rot_x, 16*self.rot_y)
 
     def fire(self):
         if pyxel.btnp(pyxel.KEY_SPACE):
